@@ -1,0 +1,6 @@
+[package]
+name = "exercises_compound_types_and_collections"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
