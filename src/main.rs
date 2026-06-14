@@ -25,15 +25,31 @@ fn count_items(items: Vec<LibraryItem>) {
     let mut books = 0;
     let mut magazines = 0;
 
+    let mut book_titles = vec![];
+    let mut magazine_titles = vec![];
+
     for item in &items {
         match item {
-            LibraryItem::Book(_) => books += 1,
-            LibraryItem::Magazine(_) => magazines += 1,
+            LibraryItem::Book(title) => {
+                books += 1;
+                book_titles.push(title);
+            }
+            LibraryItem::Magazine(title) => {
+                magazines += 1;
+                magazine_titles.push(title);
+            }
         };
     }
 
-    println!("Books: {books}");
+    println!("\nBooks: {books}");
+    for title in &book_titles {
+        println!(" - {}", title);
+    }
+
     println!("Magazines: {magazines}");
+    for title in &magazine_titles {
+        println!(" - {}", title);
+    }
 }
 
 fn main() {
