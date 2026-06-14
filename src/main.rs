@@ -3,6 +3,7 @@
 mod my_types;
 
 use my_types::LibraryItem;
+use std::collections::HashMap;
 
 fn highest_score(students: Vec<(&str, i32)>) {
     if students.is_empty() {
@@ -52,6 +53,18 @@ fn count_items(items: Vec<LibraryItem>) {
     }
 }
 
+fn count_present_students(students: HashMap<String, bool>) {
+    let mut present = 0;
+
+    for status in students.values() {
+        if *status {
+            present += 1
+        }
+    }
+
+    println!("Present students: {}", present);
+}
+
 fn main() {
     println!("\nStudent Scores");
 
@@ -72,4 +85,13 @@ fn main() {
     ];
 
     count_items(items);
+
+    // HashMaps Exercise
+    let mut student_attendance: HashMap<String, bool> = HashMap::new();
+    student_attendance.insert(String::from("ProfKache"), true);
+    student_attendance.insert(String::from("Alice"), false);
+    student_attendance.insert(String::from("Smith"), true);
+
+    println!("\nClassroom Attendance (HashMap)");
+    count_present_students(student_attendance);
 }
