@@ -65,6 +65,18 @@ fn count_present_students(students: HashMap<String, bool>) {
     println!("Present students: {}", present);
 }
 
+fn sum_matrix(matrix: Vec<Vec<i32>>) -> i32 {
+    let mut sum = 0;
+
+    for row in &matrix {
+        for item in row {
+            sum += item;
+        }
+    }
+
+    sum
+}
+
 fn main() {
     println!("\nStudent Scores");
 
@@ -94,4 +106,8 @@ fn main() {
 
     println!("\nClassroom Attendance (HashMap)");
     count_present_students(student_attendance);
+
+    println!("\nMatrix Sum (Nested Vector)");
+    let matrix = vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]];
+    println!("The sum of elements is: {}", sum_matrix(matrix));
 }
