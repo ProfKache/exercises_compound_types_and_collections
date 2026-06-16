@@ -77,6 +77,18 @@ fn sum_matrix(matrix: Vec<Vec<i32>>) -> i32 {
     sum
 }
 
+fn get_enrolled_students(subjects: &HashMap<String, Vec<String>>, subject_name: &str) {
+    match subjects.get(subject_name) {
+        Some(students) => {
+            println!("Students in {}", subject_name);
+            for student in students {
+                println!("{}", student);
+            }
+        }
+        None => println!("No {} student found", subject_name),
+    }
+}
+
 fn main() {
     println!("\nStudent Scores");
 
@@ -110,4 +122,23 @@ fn main() {
     println!("\nMatrix Sum (Nested Vector)");
     let matrix = vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]];
     println!("The sum of elements is: {}", sum_matrix(matrix));
+
+    println!("\nSchool Subjects (HashMap of Vectors)");
+
+    let mut subjects = HashMap::new();
+    subjects.insert(
+        String::from("Math"),
+        vec![
+            String::from("ProfKache"),
+            String::from("Alice"),
+            String::from("Bob"),
+        ],
+    );
+    subjects.insert(
+        String::from("Science"),
+        vec![String::from("ProfKache"), String::from("Bob")],
+    );
+
+    get_enrolled_students(&subjects, "Math");
+    get_enrolled_students(&subjects, "Science");
 }
